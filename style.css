@@ -2,3 +2,24 @@
 body {
   background: #ccc;
 }
+
+table {
+  border: 1px solid black;
+}
+
+th {
+  background-color: white;
+}
+
+tr {
+
+}
+
+td {
+  background-color: #4AE4FF;
+  border-radius: 5px;
+}
+
+.grayRow {
+  background-color: #C06AFF;
+}

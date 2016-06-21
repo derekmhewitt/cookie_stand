@@ -29,60 +29,64 @@ CookieStore.prototype.genRndmCust = function() {
   }
 };
 
-// //calculating # of cookies sold per hour based on random # of customers and avg cookies sold per customer
-// locFirstAndPike.calcCookies = function() {
-//   for(var i = 0; i < storeHours.length; i++) {
-//     this.cookiesPerHour[i] = Math.floor(this.rndmCustPerHour[i] * this.avgCookiesPerCust);
-//   }
-// };
-// locSeaTacAirport.calcCookies = function() {
-//   for(var i = 0; i < storeHours.length; i++) {
-//     this.cookiesPerHour[i] = Math.floor(this.rndmCustPerHour[i] * this.avgCookiesPerCust);
-//   }
-// };
-// locSeattleCenter.calcCookies = function() {
-//   for(var i = 0; i < storeHours.length; i++){
-//     this.cookiesPerHour[i] = Math.floor(this.rndmCustPerHour[i] * this.avgCookiesPerCust);
-//   }
-// };
-// locCapitalHill.calcCookies = function() {
-//   for(var i = 0; i < storeHours.length; i++) {
-//     this.cookiesPerHour[i] = Math.floor(this.rndmCustPerHour[i] * this.avgCookiesPerCust);
-//   }
-// };
-// locAlki.calcCookies = function() {
-//   for(var i = 0; i < storeHours.length; i++) {
-//     this.cookiesPerHour[i] = Math.floor(this.rndmCustPerHour[i] * this.avgCookiesPerCust);
-//   }
-// };
-//
-// //caltulate total daily cookies sold using cookies sold per hour and += incrementing totalDailyCookies for each # in that array
-// locFirstAndPike.calcDailyCookies = function() {
-//   for(var i = 0; i < this.cookiesPerHour.length; i++) {
-//     this.totalDailyCookies += this.cookiesPerHour[i];
-//   }
-// };
-// locSeaTacAirport.calcDailyCookies = function() {
-//   for(var i = 0; i < this.cookiesPerHour.length; i++) {
-//     this.totalDailyCookies += this.cookiesPerHour[i];
-//   }
-// };
-// locSeattleCenter.calcDailyCookies = function() {
-//   for(var i = 0; i < this.cookiesPerHour.length; i++) {
-//     this.totalDailyCookies += this.cookiesPerHour[i];
-//   }
-// };
-// locCapitalHill.calcDailyCookies = function() {
-//   for(var i = 0; i < this.cookiesPerHour.length; i++) {
-//     this.totalDailyCookies += this.cookiesPerHour[i];
-//   }
-// };
-// locAlki.calcDailyCookies = function() {
-//   for(var i = 0; i < this.cookiesPerHour.length; i++) {
-//     this.totalDailyCookies += this.cookiesPerHour[i];
-//   }
-// };
-//
+CookieStore.prototype.calcCookiesSoldPerHour = function() {
+  this.genRndmCust();
+  for(var i = 0; i < storeHours.length; i++) {
+    this.cookiesSoldPerHour[i] = Math.floor(this.rndmCustPerHour[i] * this.avgCookiesPerCust);
+    this.totalDailyCookies += this.cookiesSoldPerHour[i];
+  }
+};
+
+var tableEl = document.getElementById('cookieTable');
+
+var makeTableHeader = function() {
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
+  trEl.appendChild(thEl);
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Daily Location Total';
+  trEl.appendChild(thEl);
+  for(var i = 0; i < storeHours.length; i++) {
+    var thEl = document.createElement('th');
+    thEl.textContent = storeHours[i];
+    trEl.appendChild(thEl);
+  }
+  tableEl.appendChild(trEl);
+};
+
+makeTableHeader();
+
+CookieStore.prototype.renderTable = function() {
+  this.calcCookiesSoldPerHour();
+  var trEl = document.createElement ('tr');
+  var tdEl = document.createElement ('td');
+  tdEl.textContent = this.storeName;
+  trEl.appendChild(tdEl);
+  var tdEl = document.createElement ('td');
+  tdEl.textContent = this.totalDailyCookies;
+  trEl.appendChild(tdEl);
+  for(var i = 0; i < storeHours.length; i++) {
+    var tdEl = document.createElement ('td');
+    tdEl.textContent = this.cookiesSoldPerHour[i];
+    trEl.appendChild(tdEl);
+    if((i % 2) === 0){
+      trEl.className = 'grayRow';
+    }
+  }
+  tableEl.appendChild(trEl);
+};
+
+for(var i = 0; i < cookieStores.length; i++) {
+  var currentStore = cookieStores[i];
+  currentStore.renderTable();
+}
+//locFirstAndPike.renderTable();
+
+//for the <th> row
+//Frist make an empty cell
+//then make a cell for: 'Daily Location Total'
+//then make a for loop that puts the dialy hours in the cells
+
 // //function to populate list here
 // locFirstAndPike.outputToSales = function() {
 //   var puttingHere = document.getElementById('firstAndPikeList');
