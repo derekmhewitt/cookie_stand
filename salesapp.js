@@ -2,6 +2,16 @@
 
 var storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 var cookieStores = [];
+var addStoreForm = document.getElementById('add_store_form');
+
+addStoreForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+  var minCustPerHour = parseInt(document.getElementById('min_cust_per_hour').value),
+    maxCustPerHour = parseInt(document.getElementById('max_cust_per_hour').value),
+    avgCookiesPerCust = parseInt(document.getElementById('avg_cookies_per_hour').value),
+    storeName = document.getElementById('shop_location').value;
+  new CookieStore(minCustPerHour, maxCustPerHour, avgCookiesPerCust, storeName);
+});
 
 function CookieStore(minCustPerHour, maxCustPerHour, avgCookiesPerCust, storeName) {
   this.storeName = storeName;
@@ -12,7 +22,7 @@ function CookieStore(minCustPerHour, maxCustPerHour, avgCookiesPerCust, storeNam
   this.rndmCustPerHour = [];
   this.cookiesSoldPerHour = [];
   cookieStores.push(this);
-  console.dir(this);
+  // console.dir(this);
 };
 
 var locFirstAndPike = new CookieStore(23, 65, 6.3, '1st and Pike');
@@ -99,7 +109,8 @@ var makeTableFooter = function() {
 //call functions here
 makeTableHeader();
 for(var i = 0; i < cookieStores.length; i++) {
-  var currentStore = cookieStores[i];
-  currentStore.renderTable(i);
+  // var currentStore = cookieStores[i];
+  // currentStore.renderTable(i);
+  cookieStores[i].renderTable(i); //feeding i into renderTable to add classes
 }
 makeTableFooter();
