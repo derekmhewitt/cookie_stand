@@ -2,7 +2,7 @@
 CodeFellows 201 Cookie Stand Project
 
 day2FeatureWork
-Removed object literals from salesapp.js and replaced with constructor funtion.  Coded object output to cookie table.  
+Removed object literals from salesapp.js and replaced with constructor function.  Coded output for all object to cookie table.  
 
 day1FeatureWork
 Created individual pages and fleshing out basic structure.  Working on sales.html and salesapp.js mostly.  

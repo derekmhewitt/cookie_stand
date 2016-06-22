@@ -4,22 +4,22 @@ body {
 }
 
 table {
-  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 th {
-  background-color: white;
-}
-
-tr {
-
+  background-color: #CC5A3E;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 td {
-  background-color: #4AE4FF;
-  border-radius: 5px;
+  background-color: #D69E42;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .grayRow td {
-  background-color: #C06AFF;
+  background-color: #BF8044;
 }
