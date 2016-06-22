@@ -20,6 +20,6 @@ td {
   border-radius: 5px;
 }
 
-.grayRow {
+.grayRow td {
   background-color: #C06AFF;
 }

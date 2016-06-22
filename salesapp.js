@@ -54,9 +54,7 @@ var makeTableHeader = function() {
   tableEl.appendChild(trEl);
 };
 
-makeTableHeader();
-
-CookieStore.prototype.renderTable = function() {
+CookieStore.prototype.renderTable = function(rowCounter) {
   this.calcCookiesSoldPerHour();
   var trEl = document.createElement ('tr');
   var tdEl = document.createElement ('td');
@@ -69,17 +67,54 @@ CookieStore.prototype.renderTable = function() {
     var tdEl = document.createElement ('td');
     tdEl.textContent = this.cookiesSoldPerHour[i];
     trEl.appendChild(tdEl);
-    if((i % 2) === 0){
+    if((rowCounter % 2) === 0){
       trEl.className = 'grayRow';
     }
   }
   tableEl.appendChild(trEl);
 };
 
+var makeTableFooter = function() {
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  trEl.appendChild(tdEl);
+  var allDailyLocationTotal = 0;
+  for(var i = 0; i < cookieStores.length; i++) {
+    allDailyLocationTotal += cookieStores[i].totalDailyCookies;
+  }
+  var tdEl = document.createElement('td');
+  tdEl.textContent = allDailyLocationTotal;
+  trEl.appendChild(tdEl);
+  for(var i = 0; i < storeHours.length; i++) {
+    var totalCookiesAtCurrentHour = 0;
+    for(var j = 0; j < cookieStores.length; j++) {
+      totalCookiesAtCurrentHour += cookieStores[j].cookiesSoldPerHour[i];
+    }
+    var tdEl = document.createElement('td');
+    tdEl.textContent = totalCookiesAtCurrentHour;
+    trEl.appendChild(tdEl);
+  }
+  tableEl.appendChild(trEl);
+};
+
+//call functions here
+makeTableHeader();
 for(var i = 0; i < cookieStores.length; i++) {
   var currentStore = cookieStores[i];
-  currentStore.renderTable();
+  currentStore.renderTable(i);
 }
+makeTableFooter();
+
+/*pseudocode for getting and displaying daily total and total cookies sold at all stores per hour
+for(var i = 0; i < hours.length, i++) {
+total cookies at current hour = 0
+  for(var j = 0; j < cookieStores.length; j++){
+    get hourly cookes from each store at hour [i] and add them to total cookies at current hour
+  }
+  add total cookies at current hour to document
+}
+*/
+
 //locFirstAndPike.renderTable();
 
 //for the <th> row
