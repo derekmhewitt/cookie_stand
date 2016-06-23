@@ -75,6 +75,7 @@ var makeTableHeader = function() {
 var makeTableFooter = function() {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
+  tdEl.className = 'table_footer';
   tdEl.textContent = 'Totals:';
   trEl.appendChild(tdEl);
   var allDailyLocationTotal = 0;
@@ -82,6 +83,7 @@ var makeTableFooter = function() {
     allDailyLocationTotal += cookieStores[i].totalDailyCookies;
   }
   var tdEl = document.createElement('td');
+  tdEl.className = 'table_footer';
   tdEl.textContent = allDailyLocationTotal;
   trEl.appendChild(tdEl);
   for(var i = 0; i < storeHours.length; i++) {
@@ -90,6 +92,7 @@ var makeTableFooter = function() {
       totalCookiesAtCurrentHour += cookieStores[j].cookiesSoldPerHour[i];
     }
     var tdEl = document.createElement('td');
+    tdEl.className = 'table_footer';
     tdEl.textContent = totalCookiesAtCurrentHour;
     trEl.appendChild(tdEl);
   }
