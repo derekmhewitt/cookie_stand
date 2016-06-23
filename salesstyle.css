@@ -1,7 +1,11 @@
 
+* {
+  border: 3px dashed green;
+}
 table {
   border-radius: 10px;
-  padding: 5px;
+  padding: 10px;
+  margin: 50px;
 }
 
 th {
@@ -11,8 +15,9 @@ th {
 }
 
 td {
+  margin:20px;
   background-color: #D69E42;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
 }
 

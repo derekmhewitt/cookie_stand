@@ -15,6 +15,11 @@ Created individual pages and fleshing out basic structure.  Working on sales.htm
 
 Credits:
 
+Reset style sheet from:
+http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+
 Basic site layout mostly from Brian Nations
 https://github.com/bnates
 
