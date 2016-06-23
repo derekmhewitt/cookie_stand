@@ -1,0 +1,25 @@
+
+table {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+th {
+  background-color: #CC5A3E;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+td {
+  background-color: #D69E42;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.grayRow td {
+  background-color: #BF8044;
+}
+
+.table_footer {
+  background-color: #CC5A3E;
+}
