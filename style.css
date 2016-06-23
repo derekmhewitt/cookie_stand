@@ -20,9 +20,8 @@ header img {
 }
 
 header ul li {
-  justify-content: center;
   display: inline-block;
-  margin-left: 50px;
+  margin-left: 120px;
   margin-top: 40px;
   color: white;
 }
@@ -36,9 +35,28 @@ main {
   margin-bottom: 30px;
 }
 
+.banner_container {
+  position: relative;
+}
+
+h1 {
+  position: absolute;
+  bottom: 85px;
+  font-family: sans-serif;
+  font-size: 50px;
+  width: 100%;
+  padding: 1% 0;
+  text-align: center;
+  background: white;
+}
+
 .sub_banners li{
   float: left;
   margin-right: 30px;
+}
+
+.sub_banners li:nth-child(2) {
+  outline: solid black 2px;
 }
 
 .sub_banners li:last-child {
@@ -50,14 +68,30 @@ main {
   display: block;
 }
 
+.shirtdiv {
+  margin: 30px auto;
+}
+.shirtdiv img{
+  float: left;
+  margin-right: 30px;
+}
+
+body img:nth-child(5) {
+  margin: 30px auto;
+  outline: 2px solid black;
+}
 footer {
   background: #555;
   height: 125px;
   justify-content: center;
+  text-align: center;
+}
+
+footer ul {
+  justify-content: center;
 }
 
 footer ul li {
-  justify-content: center;
   display: inline-block;
   margin-left: 50px;
   margin-top: 30px;
