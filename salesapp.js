@@ -56,7 +56,7 @@ CookieStore.prototype.renderTable = function(rowCounter) {
     tdEl = document.createElement('td');
     tdEl.textContent = this.cookiesSoldPerHour[i];
     trEl.appendChild(tdEl);
-    if((rowCounter % 2) === 0){
+    if((rowCounter % 2) === 0) {
       trEl.className = 'grayRow';
     }
   }
