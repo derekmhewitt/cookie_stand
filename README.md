@@ -2,7 +2,7 @@
 CodeFellows 201 Cookie Stand Project
 
 day4FeatureWork
-On the agenda today is to work on a layout following Brian's demo as a guide and styling from there.  There are also some minor fixes to be done to my sales.html page and sales.js file.  
+Major layout work, I used mostly Brian's layout template to style my page and ended up with something pretty similar.  Styled the table on sales.html as well.  Some JS edits to salesapp.js that cleaned up the code quite nicely.  
 
 day3 - no branch on my repo for this
 Was pair programming, so my work is primarily in my fork of Valerie's repo and hers is in her fork of mine, which have both been merged now.  But our development paths were very similar and focused on getting the input fields into each of our sales.html page.  
