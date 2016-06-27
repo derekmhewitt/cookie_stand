@@ -5,6 +5,17 @@ var cookieStores = [];
 var addStoreForm = document.getElementById('add_store_form');
 var tableEl = document.getElementById('cookieTable');
 
+function elementBuilder(type, content, destination, classy) {
+  var placeholder = document.createElement(type);
+  placeholder.textContent = content;
+  if(classy == true) {
+    // console.log(classy);
+    placeholder.className = classy;
+  }
+  console.log(placeholder);
+  destination.appendChild(placeholder);
+}
+
 addStoreForm.addEventListener('submit', function(event) {
   event.preventDefault();
   var minCustPerHour = parseInt(document.getElementById('min_cust_per_hour').value),
@@ -46,16 +57,10 @@ CookieStore.prototype.calcCookiesSoldPerHour = function() {
 
 CookieStore.prototype.renderTable = function(rowCounter) {
   var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
-  tdEl.textContent = this.storeName;
-  trEl.appendChild(tdEl);
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.totalDailyCookies;
-  trEl.appendChild(tdEl);
+  elementBuilder('td', this.storeName, trEl);
+  elementBuilder('td', this.totalDailyCookies, trEl);
   for(var i = 0; i < storeHours.length; i++) {
-    tdEl = document.createElement('td');
-    tdEl.textContent = this.cookiesSoldPerHour[i];
-    trEl.appendChild(tdEl);
+    elementBuilder('td', this.cookiesSoldPerHour[i], trEl);
     if((rowCounter % 2) === 0) {
       trEl.className = 'grayRow';
     }
@@ -71,15 +76,10 @@ var locAlki = new CookieStore(2, 16, 4.6, 'Alki Beach');
 
 var makeTableHeader = function() {
   var trEl = document.createElement('tr');
-  var thEl = document.createElement('th');
-  trEl.appendChild(thEl);
-  thEl = document.createElement('th');
-  thEl.textContent = 'Daily Location Total';
-  trEl.appendChild(thEl);
+  elementBuilder('th', null, trEl);
+  elementBuilder('th', 'Daily Location Total', trEl);
   for(var i = 0; i < storeHours.length; i++) {
-    thEl = document.createElement('th');
-    thEl.textContent = storeHours[i];
-    trEl.appendChild(thEl);
+    elementBuilder('th', storeHours[i], trEl);
   }
   tableEl.appendChild(trEl);
 };
@@ -89,12 +89,13 @@ var makeTableFooter = function() {
   var tdEl = document.createElement('td');
   tdEl.className = 'table_footer';
   tdEl.textContent = 'Totals:';
+  // elementBuilder('td', 'Totals:', trEl, 'table_footer');
   trEl.appendChild(tdEl);
   var allDailyLocationTotal = 0;
   for(var i = 0; i < cookieStores.length; i++) {
     allDailyLocationTotal += cookieStores[i].totalDailyCookies;
   }
-  tdEl = document.createElement('td');
+  var tdEl = document.createElement('td');
   tdEl.className = 'table_footer';
   tdEl.textContent = allDailyLocationTotal;
   trEl.appendChild(tdEl);

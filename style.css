@@ -5,7 +5,8 @@ body {
 }
 
 header {
-  background: #555;
+  color: white;
+  background-color: #CC5A3E;
   height: 100px;
 }
 
@@ -81,7 +82,7 @@ body img:nth-child(5) {
   outline: 2px solid black;
 }
 footer {
-  background: #555;
+  background-color: #CC5A3E;
   height: 125px;
   justify-content: center;
   text-align: center;
